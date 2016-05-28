@@ -1,3 +1,4 @@
+@wip
 Feature: Search by receipt name
 
   Scenario: Search by partial name
