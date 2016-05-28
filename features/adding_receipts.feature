@@ -1,3 +1,4 @@
+@wip
 Feature: Adding Receipts
 
   Scenario: Add simple receipt with multiple ingredients

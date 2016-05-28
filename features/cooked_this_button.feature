@@ -1,3 +1,4 @@
+@wip
 Feature: User should be able to mark receipt as 'cooked'
 
   Background:
