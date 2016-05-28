@@ -15,6 +15,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
@@ -31,4 +32,6 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'db-query-matchers'
+  gem 'faker'
 end
