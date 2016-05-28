@@ -14,7 +14,7 @@ Feature: Adding ingredients
 
   Scenario: Add child ingredient
     Given ingredient "Flour"
-    When on "add ingredient" page
+    When visit "add ingredient" page
     And fill "name" with "Rice flour"
     And select "parent" as "Flour"
     Then visit "Ingredient list" page

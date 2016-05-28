@@ -1,0 +1,17 @@
+!!!
+%head
+  %title Pice-A-Cake
+  = stylesheet_link_tag    'application', media: 'all'
+  = csrf_meta_tags
+%body
+  .header
+    - if signed_in?
+      = button_to 'Sign out', sign_out_path, method: :delete
+    - else
+      = link_to 'Sign in', sign_in_path
+      = link_to 'Sign up', sign_up_path
+
+  .content
+    = yield
+
+  = javascript_include_tag 'application'

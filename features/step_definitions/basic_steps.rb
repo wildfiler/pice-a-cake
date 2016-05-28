@@ -1,5 +1,6 @@
 Given(/^signed in user$/) do
-  pending
+  user = create :user
+  visit root_path(as: user)
 end
 
 And(/^check "([^"]*)" checkbox$/) do |checkbox|
