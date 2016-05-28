@@ -9,9 +9,11 @@ end
 
 Given(/^ingredients$/) do |ingredients|
   # table is a table.hashes.keys # => [:name]
-  pending
+  ingredients.hashes.each do |ingredient|
+    create :ingredient, name: ingredient['name']
+  end
 end
 
 Given(/^ingredient "([^"]*)"$/) do |ingredient|
-  pending
+  create :ingredient, name: ingredient
 end

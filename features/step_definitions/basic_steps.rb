@@ -3,23 +3,23 @@ Given(/^signed in user$/) do
 end
 
 And(/^check "([^"]*)" checkbox$/) do |checkbox|
-  pending
+  check checkbox
 end
 
 And(/^click "([^"]*)"$/) do |button_or_link|
-  pending
+  click_link_or_button(button_or_link)
 end
 
 And(/^fill "([^"]*)" with "([^"]*)"$/) do |field, value|
-  pending
+  fill_in field, with: value
 end
 
 And(/^select "([^"]*)" as "([^"]*)"$/) do |field, value|
-  pending
+  select value, from: field
 end
 
 Then(/^not see "([^"]*)" button$/) do |button_name|
-  pending
+  expect(page).to_not have_css('button', text: button_name)
 end
 
 And(/^see "([^"]*)"$/) do |content|
