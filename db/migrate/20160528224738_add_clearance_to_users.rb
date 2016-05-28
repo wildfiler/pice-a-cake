@@ -11,7 +11,7 @@ class AddClearanceToUsers < ActiveRecord::Migration
 
     reversible do |dir|
       dir.up do
-        users = select_all("SELECT id FROM users WHERE remember_token IS NULL")
+        users = select_all('SELECT id FROM users WHERE remember_token IS NULL')
 
         users.each do |user|
           update <<-SQL
