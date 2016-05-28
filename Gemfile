@@ -8,6 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
 gem 'puma'
+gem 'clearance'
+gem 'haml'
 
 group :production do
   gem 'newrelic_rpm'

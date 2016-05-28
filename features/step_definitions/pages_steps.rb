@@ -4,11 +4,12 @@ PAGE_ROUTES = {
 }.freeze
 
 When(/^on "([^"]*)" page$/) do |page_name|
-  pending
+  key = page_name.downcase.gsub(' ', '_').to_sym
+  expect(current_path).to eq(PAGE_ROUTES[key])
 end
 
 When(/^visit "([^"]*)" page$/) do |page_name|
-  key = page_name.downcase.underscore.to_sym
+  key = page_name.downcase.gsub(' ', '_').to_sym
   if PAGE_ROUTES.key?(key)
     visit PAGE_ROUTES[key]
   else
