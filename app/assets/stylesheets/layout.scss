@@ -1,0 +1,14 @@
+.header {
+  @extend .navbar-default;
+  @extend .navbar;
+}
+
+.login-bar {
+  @extend .nav;
+  @extend .navbar-nav;
+  @extend .navbar-right;
+}
+
+.content {
+  @extend .container;
+}

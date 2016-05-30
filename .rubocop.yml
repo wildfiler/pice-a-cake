@@ -3,7 +3,7 @@ AllCops:
     - "vendor/**/*"
     - "db/schema.rb"
   UseCache: false
-  TargetRubyVersion: 2.3.1
+  TargetRubyVersion: 2.3
 Rails:
   Enabled: true
 Metrics/LineLength:

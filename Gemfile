@@ -12,6 +12,7 @@ gem 'clearance'
 gem 'haml'
 
 gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
 
 group :production do
   gem 'newrelic_rpm'
