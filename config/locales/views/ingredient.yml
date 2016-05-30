@@ -1,0 +1,14 @@
+en:
+  ingredients:
+    show:
+      name: 'Name'
+      vegeterian: 'Vegetarian'
+      spice: 'Spice'
+      parent: 'Parent'
+    index:
+      name: 'Name'
+      vegeterian: 'Vegetarian'
+      spice: 'Spice'
+    new:
+      save: 'Save'
+      parent: 'Parent'

@@ -1,0 +1,10 @@
+= simple_form_for @ingredient do |f|
+  = f.input :name
+  = f.input :vegeterian
+  = f.input :spice
+  = f.input :parent_id,
+            collection: Ingredient.all,
+            label_method: :name,
+            value_method: :id,
+            label: t('.parent')
+  = f.submit t('.save')

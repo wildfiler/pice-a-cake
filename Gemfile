@@ -13,6 +13,7 @@ gem 'haml'
 
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
+gem 'simple_form'
 
 group :production do
   gem 'newrelic_rpm'

@@ -1,17 +1,21 @@
 %table.ingredient-table
   %thead
-    %th= t('ingredient.name')
-    %th= t('ingredient.vegeterian')
-    %th= t('ingredient.spice')
+    %th= t('.name')
+    %th= t('.vegeterian')
+    %th= t('.spice')
   %tbody
     - @ingredients.each do |ingredient|
       %tr{ id: "ingredient-#{ingredient.id}" }
-        %td= ingredient.name
+        %td= link_to ingredient.name, ingredient_path(ingredient)
         %td
           - if ingredient.vegeterian?
             %span.icon-check
+          - else
+            %span.icon-remove
         %td
           - if ingredient.spice?
             %span.icon-check
+          - else
+            %span.icon-remove
 
 = will_paginate @ingredients

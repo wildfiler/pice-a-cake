@@ -1,4 +1,3 @@
-@wip
 Feature: Adding ingredients
 
   Background:
@@ -6,19 +5,19 @@ Feature: Adding ingredients
 
   Scenario: Add simple ingredient
     When visit "add ingredient" page
-    And fill "name" with "Carrot"
-    And check "vegetarian" checkbox
+    And fill "Name" with "Carrot"
+    And check "Vegetarian" checkbox
     And click "Save"
-    And visit "Ingredient list" page
+    And visit "Ingredients list" page
     Then see "Carrot" ingredient
 
   Scenario: Add child ingredient
     Given ingredient "Flour"
     When visit "add ingredient" page
-    And fill "name" with "Rice flour"
-    And select "parent" as "Flour"
-    Then visit "Ingredient list" page
-    And see "Flour" ingredient
+    And fill "Name" with "Rice flour"
+    And select "Parent" as "Flour"
+    And click "Save"
+    Then visit "Ingredients list" page
+    And see "Rice flour" ingredient
     Then visit "Rice flour" ingredient page
     And see "Parent: Flour"
-

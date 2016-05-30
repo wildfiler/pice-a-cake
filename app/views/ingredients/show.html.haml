@@ -1,0 +1,4 @@
+%h4= @ingredient.name
+#{t('.parent')}: #{@ingredient.parent_name}
+%p= t('.vegeterian') if @ingredient.vegeterian?
+%p= t('.spice') if @ingredient.spice?

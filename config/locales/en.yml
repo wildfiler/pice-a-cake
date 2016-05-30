@@ -20,7 +20,3 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  ingredient:
-    name: 'Name'
-    vegeterian: 'Vegetarian'
-    spice: 'Spice'

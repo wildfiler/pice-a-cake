@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    attributes:
+      ingredient:
+        name: 'Name'
+        spice: 'Spice'
+        vegeterian: 'Vegetarian'
+    models:
+      ingredient: 'Ingredient'

@@ -1,5 +1,5 @@
 Then(/^see "([^"]*)" ingredient$/) do |ingredient_name|
-  pending
+  expect(page).to have_css('tr td', text: ingredient_name)
 end
 
 And(/^add ingredients$/) do |ingredients|
