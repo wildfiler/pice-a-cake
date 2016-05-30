@@ -11,6 +11,8 @@ gem 'puma'
 gem 'clearance'
 gem 'haml'
 
+gem 'bootstrap-sass'
+
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
