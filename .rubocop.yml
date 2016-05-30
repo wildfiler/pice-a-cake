@@ -305,3 +305,6 @@ Rails/TimeZone:
 Rails/Validation:
   Include:
     - app/models/**/*.rb
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
