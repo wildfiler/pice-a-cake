@@ -24,6 +24,8 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+  gem 'activerecord_sane_schema_dumper'
+  gem 'quiet_assets'
 end
 
 group :development do
