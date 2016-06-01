@@ -1,16 +1,16 @@
 FactoryGirl.define do
   factory :receipt do
-    sequence(:title) { |n| "Receipt ##{n}"}
+    sequence(:title) { |n| "Receipt ##{n}" }
     description { Faker::Lorem.paragraph }
 
-    trait(:with_components)do
-      after(:build) do |receipt|
+    trait(:with_components) do
+      after(:create) do |receipt|
         receipt.components = build_list(:component, 3, receipt: receipt)
       end
     end
 
     trait :vegeterian do
-      after(:build) do |receipt|
+      after(:create) do |receipt|
         receipt.components = build_list(:component, 3, :vegeterian, receipt: receipt)
       end
     end

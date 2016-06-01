@@ -42,4 +42,5 @@ group :test do
   gem 'capybara-webkit'
   gem 'db-query-matchers'
   gem 'faker'
+  gem 'shoulda'
 end

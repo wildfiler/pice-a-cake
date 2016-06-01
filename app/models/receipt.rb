@@ -3,6 +3,8 @@ class Receipt < BaseModel
   has_many :components
   has_many :ingredients, through: :components
 
+  validates :title, presence: true
+
   def vegeterian?
     if ingredients.loaded?
       ingredients.to_a.all?(&:vegeterian?)
