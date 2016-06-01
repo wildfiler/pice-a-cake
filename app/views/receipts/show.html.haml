@@ -1,0 +1,11 @@
+.receipt-panel
+  %h3= @receipt.title
+
+  .receipt-body
+    %p= @receipt.description
+    %ul.components
+      - @receipt.components.each do |component|
+        %li.component
+          = component.ingredient.name
+          = component.quantity
+          = component.units

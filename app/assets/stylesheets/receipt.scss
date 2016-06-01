@@ -1,0 +1,21 @@
+.receipts {
+  @extend .list-group;
+}
+
+.receipt-element {
+  @extend .list-group-item;
+}
+
+.components {
+  .component {
+    display: inline;
+  }
+
+  ::after {
+    content: ", ";
+  }
+
+  :last-child::after {
+    content: "";
+  }
+}

@@ -5,6 +5,8 @@ class Receipt < BaseModel
 
   validates :title, presence: true
 
+  scope :ordered, -> { order(created_at: :desc) }
+
   def vegeterian?
     if ingredients.loaded?
       ingredients.to_a.all?(&:vegeterian?)
