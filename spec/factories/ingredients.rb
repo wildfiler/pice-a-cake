@@ -13,5 +13,10 @@ FactoryGirl.define do
       vegeterian true
       after(:build) { |ingredient| ingredient.name = "Vegetarian #{ingredient.name}" }
     end
+
+    trait :all_type do
+      spice
+      vegeterian
+    end
   end
 end
