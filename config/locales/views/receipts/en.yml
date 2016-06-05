@@ -1,4 +1,10 @@
 en:
   receipts:
+
     index:
       all_receipts: 'All Receipts'
+    new:
+      new_receipt: 'New Receipt'
+      components: 'Components'
+      quantity: 'Quantity'
+      units: 'Units'

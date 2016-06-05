@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    attributes:
+      receipt:
+        title: 'Title'
+    models:
+      ingredient: 'Receipt'

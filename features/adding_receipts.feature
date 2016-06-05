@@ -1,4 +1,3 @@
-@wip
 Feature: Adding Receipts
 
   Scenario: Add simple receipt with multiple ingredients
@@ -10,13 +9,13 @@ Feature: Adding Receipts
       | Salt      |
       | Green tea |
     When visit "Add receipt" page
-    And fill "title" with "Grechka Tea"
-    And add ingredients
+    And fill "Title" with "Grechka Tea"
+    And add components
       | name      | quantity | unit |
       | Grechka   | 100      | kg   |
       | Water     | 5000     | l    |
       | Salt      | 30       | kg   |
       | Green tea | 1        | t    |
-    And fill "description" with "Traditional Idiots tea"
-    And click "Save"
+    And fill "Description" with "Traditional Idiots tea"
+    And click "Create Receipt"
     Then on "Grechka Tea" receipt page

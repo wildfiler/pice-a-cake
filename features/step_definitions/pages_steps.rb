@@ -1,7 +1,8 @@
 PAGE_ROUTES = {
   home: '/',
   add_ingredient: '/ingredients/new',
-  ingredients_list: '/ingredients'
+  ingredients_list: '/ingredients',
+  add_receipt: '/receipts/new'
 }.freeze
 
 When(/^on "([^"]*)" page$/) do |page_name|
@@ -19,7 +20,7 @@ When(/^visit "([^"]*)" page$/) do |page_name|
 end
 
 Then(/^on "([^"]*)" receipt page$/) do |receipt_name|
-  receipt = Receipt.find_by!(name: receipt_name)
+  receipt = Receipt.find_by!(title: receipt_name)
   expect(current_path).to eq(receipt_path(receipt))
 end
 
