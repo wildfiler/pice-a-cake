@@ -1,6 +1,6 @@
 class Receipt < BaseModel
   belongs_to :user
-  has_many :components
+  has_many :components, dependent: :destroy
   has_many :ingredients, through: :components
 
   validates :title, presence: true

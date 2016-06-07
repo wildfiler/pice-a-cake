@@ -5,6 +5,10 @@ describe Receipt do
     it { is_expected.to validate_presence_of(:title) }
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:components).dependent(:destroy) }
+  end
+
   describe '#vegeterian?' do
     context 'all ingredients are vegeterian' do
       it 'returns true' do
