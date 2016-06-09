@@ -1,0 +1,8 @@
+en:
+  ingredient_attitudes:
+    index:
+      loved_ingredients: 'Loved Ingredients'
+      hated_ingredients: 'Hated Ingredients'
+      name: 'Name'
+      vegeterian: 'Vegetarian'
+      spice: 'Spice'

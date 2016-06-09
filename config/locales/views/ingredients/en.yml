@@ -5,6 +5,8 @@ en:
       vegeterian: 'Vegetarian'
       spice: 'Spice'
       parent: 'Parent'
+      i_love_this: 'I love this'
+      i_hate_this: 'I hate this'
     index:
       name: 'Name'
       vegeterian: 'Vegetarian'

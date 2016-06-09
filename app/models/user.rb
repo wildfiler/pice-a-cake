@@ -3,4 +3,5 @@ class User < BaseModel
 
   has_many :receipts
   has_many :ingredients
+  has_many :ingredient_attitudes, dependent: :destroy
 end

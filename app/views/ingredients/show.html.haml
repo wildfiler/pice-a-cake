@@ -2,3 +2,6 @@
 #{t('.parent')}: #{@ingredient.parent_name}
 %p= t('.vegeterian') if @ingredient.vegeterian?
 %p= t('.spice') if @ingredient.spice?
+
+= link_to t('.i_love_this'), ingredient_loved_path(@ingredient), method: 'post'
+= link_to t('.i_hate_this'), ingredient_hated_path(@ingredient), method: 'post'

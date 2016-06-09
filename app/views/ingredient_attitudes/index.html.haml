@@ -1,0 +1,23 @@
+%h2= t("#{@attitude}d_ingredients")
+%table.ingredient-table
+  %thead
+    %th= t('.name')
+    %th= t('.vegeterian')
+    %th= t('.spice')
+  %tbody
+    - @ingredient_attitudes.each do |ingredient_attitude|
+      %tr{ id: "ingredient-#{ingredient_attitude.id}" }
+        %td= link_to ingredient_attitude.ingredient.name,
+          ingredient_path(ingredient_attitude.ingredient)
+        %td
+          - if ingredient_attitude.ingredient.vegeterian?
+            %span.icon-check
+          - else
+            %span.icon-remove
+        %td
+          - if ingredient_attitude.ingredient.spice?
+            %span.icon-check
+          - else
+            %span.icon-remove
+
+= will_paginate @ingredient_attitudes

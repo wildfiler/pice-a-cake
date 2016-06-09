@@ -2,6 +2,10 @@ Then(/^see "([^"]*)" ingredient$/) do |ingredient_name|
   expect(page).to have_css('tr td', text: ingredient_name)
 end
 
+Then(/^not see "([^"]*)"$/) do |ingredient_name|
+  expect(page).to_not have_content(ingredient_name)
+end
+
 And(/^add components$/) do |components|
   components.hashes.each_with_index do |component, i|
     select component[:name], from: "receipt_components_attributes_#{i}_ingredient_id"
