@@ -3,11 +3,11 @@ And(/^receipt "([^"]*)"$/) do |receipt_name|
 end
 
 Then(/^see "([^"]*)" receipt$/) do |receipt_name|
-  pending
+  expect(page).to have_content(receipt_name)
 end
 
 Then(/^not see "([^"]*)" receipt$/) do |receipt_name|
-  pending
+  expect(page).to_not have_content(receipt_name)
 end
 
 Given(/^receipts$/) do |receipts|

@@ -1,0 +1,5 @@
+en:
+  home:
+    index:
+      enter_receipt_name: 'Enter receipt name'
+      search: 'Search'

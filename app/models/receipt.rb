@@ -9,6 +9,7 @@ class Receipt < BaseModel
   validates :title, presence: true
 
   scope :ordered, -> { order(created_at: :desc) }
+  scope :find_by_title, -> (query) { where('title LIKE ?', "%#{query}%") }
 
   def vegeterian?
     if ingredients.loaded?

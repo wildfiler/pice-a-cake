@@ -1,4 +1,3 @@
-@wip
 Feature: Search by receipt name
 
   Scenario: Search by partial name
@@ -8,7 +7,7 @@ Feature: Search by receipt name
       | Poopcake       |
       | Fry Strawberry |
     When visit "home" page
-    And fill "search_query" with "cake"
+    And fill "Enter receipt name" with "cake"
     And click "Search"
     Then see "Cupcake" receipt
     And see "Poopcake" receipt
