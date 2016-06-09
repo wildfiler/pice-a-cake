@@ -3,3 +3,4 @@ en:
     index:
       enter_receipt_name: 'Enter receipt name'
       search: 'Search'
+      latest_ten_receipts: 'Latest ten receipts'

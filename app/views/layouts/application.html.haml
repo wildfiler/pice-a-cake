@@ -5,12 +5,20 @@
   = csrf_meta_tags
 %body
   .header{ role: 'navigation' }
-    %ul.login-bar
-      - if signed_in?
-        %li= link_to 'Sign out', sign_out_path, method: :delete
-      - else
-        %li= link_to 'Sign in', sign_in_path
-        %li= link_to 'Sign up', sign_up_path
+    .logo
+      Piece-a-cake
+    .navigation
+      %ul.menu
+        %li= link_to 'Receipts', receipts_path
+        %li= link_to 'Ingredients', ingredients_path
+        %li= link_to 'Add Ingredient', new_ingredient_path
+
+      %ul.login-bar
+        - if signed_in?
+          %li= link_to 'Sign out', sign_out_path, method: :delete
+        - else
+          %li= link_to 'Sign in', sign_in_path
+          %li= link_to 'Sign up', sign_up_path
 
   .content
     = yield

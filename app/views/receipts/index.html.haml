@@ -1,11 +1,3 @@
 %h1= t('.all_receipts')
-.receipts
-  - @receipts.each do |receipt|
-    .receipt-element
-      %h4= link_to receipt.title, receipt_path(receipt)
-      %ul.components
-        - receipt.components.each do |component|
-          %li.component
-            = component.ingredient.name
-
+= render partial: 'receipts/receipts_list', locals: { receipts: @receipts }
 = will_paginate @receipts

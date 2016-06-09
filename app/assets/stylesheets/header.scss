@@ -1,0 +1,26 @@
+.header {
+  @extend .navbar-default;
+  @extend .navbar;
+
+  .logo {
+    @extend .navbar-brand;
+  }
+
+  .navigation {
+    @extend .collapse;
+    @extend .navbar-collapse;
+
+
+  }
+
+  .login-bar {
+    @extend .nav;
+    @extend .navbar-nav;
+    @extend .navbar-right;
+  }
+
+  .menu {
+    @extend .nav;
+    @extend .navbar-nav;
+  }
+}
