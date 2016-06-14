@@ -1,6 +1,5 @@
 en:
   receipts:
-
     index:
       all_receipts: 'All Receipts'
     new:
@@ -8,3 +7,6 @@ en:
       components: 'Components'
       quantity: 'Quantity'
       units: 'Units'
+    show:
+      i_love_this: 'I love this'
+      i_hate_this: 'I hate this'

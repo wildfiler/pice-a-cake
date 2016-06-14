@@ -1,0 +1,5 @@
+en:
+   recipe_attitudes:
+     index:
+       loved_recipes: 'Loved Ingredients'
+       hated_recipes: 'Hated Ingredients'

@@ -3,6 +3,7 @@ class Receipt < BaseModel
 
   has_many :components, dependent: :destroy, inverse_of: :receipt
   has_many :ingredients, through: :components
+  has_many :recipe_attitudes, dependent: :destroy
 
   accepts_nested_attributes_for :components, reject_if: proc { |a| a[:ingredient_id].blank? }
 

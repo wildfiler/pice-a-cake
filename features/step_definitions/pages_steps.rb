@@ -4,7 +4,9 @@ PAGE_ROUTES = {
   ingredients_list: '/ingredients',
   add_receipt: '/receipts/new',
   my_loved_ingredients: '/ingredients/loved',
-  my_hated_ingredients: '/ingredients/hated'
+  my_hated_ingredients: '/ingredients/hated',
+  my_loved_recipes: '/receipts/loved',
+  my_hated_recipes: '/receipts/hated'
 }.freeze
 
 When(/^on "([^"]*)" page$/) do |page_name|
@@ -27,7 +29,7 @@ Then(/^on "([^"]*)" receipt page$/) do |receipt_name|
 end
 
 When(/^visit "([^"]*)" receipt page$/) do |receipt_name|
-  receipt = Receipt.find_by!(name: receipt_name)
+  receipt = Receipt.find_by!(title: receipt_name)
   visit receipt_path(receipt)
 end
 
