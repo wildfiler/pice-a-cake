@@ -3,3 +3,4 @@ en:
      index:
        loved_recipes: 'Loved Ingredients'
        hated_recipes: 'Hated Ingredients'
+       cooked_recipes: 'Cooked recipes'

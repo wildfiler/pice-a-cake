@@ -4,6 +4,7 @@ class Receipt < BaseModel
   has_many :components, dependent: :destroy, inverse_of: :receipt
   has_many :ingredients, through: :components
   has_many :recipe_attitudes, dependent: :destroy
+  has_many :cooked_recipes, dependent: :destroy
 
   accepts_nested_attributes_for :components, reject_if: proc { |a| a[:ingredient_id].blank? }
 
@@ -18,5 +19,9 @@ class Receipt < BaseModel
     else
       ingredients.all?(&:vegeterian?)
     end
+  end
+
+  def cooked_by?(user)
+    cooked_recipes.where(user: user).exists?
   end
 end

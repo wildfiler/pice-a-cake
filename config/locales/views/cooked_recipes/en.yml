@@ -1,0 +1,7 @@
+en:
+  cooked_recipes:
+    index:
+      cooked_recipes: 'Cooked recipes'
+      name: 'Name'
+      vegeterian: 'Vegetarian'
+      spice: 'Spice'

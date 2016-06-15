@@ -6,7 +6,8 @@ PAGE_ROUTES = {
   my_loved_ingredients: '/ingredients/loved',
   my_hated_ingredients: '/ingredients/hated',
   my_loved_recipes: '/receipts/loved',
-  my_hated_recipes: '/receipts/hated'
+  my_hated_recipes: '/receipts/hated',
+  cooked_receipts: '/receipts/cooked'
 }.freeze
 
 When(/^on "([^"]*)" page$/) do |page_name|

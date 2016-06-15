@@ -5,4 +5,5 @@ class User < BaseModel
   has_many :ingredients
   has_many :ingredient_attitudes, dependent: :destroy
   has_many :recipe_attitudes, dependent: :destroy
+  has_many :cooked_recipes, dependent: :destroy
 end
