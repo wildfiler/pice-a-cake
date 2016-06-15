@@ -1,6 +1,8 @@
 class ReceiptsController < ApplicationController
   def index
-    @receipts = Receipt.ordered.paginate(page: params[:page], per_page: 10)
+    @receipts = Receipt.
+                ordered.
+                paginate(page: params[:page], per_page: 10)
   end
 
   def show

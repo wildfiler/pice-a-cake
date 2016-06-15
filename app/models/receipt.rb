@@ -12,6 +12,7 @@ class Receipt < BaseModel
 
   scope :ordered, -> { order(created_at: :desc) }
   scope :find_by_title, -> (query) { where('title LIKE ?', "%#{query}%") }
+  scope :last_ten, -> { ordered.first(10) }
 
   def vegeterian?
     if ingredients.loaded?
