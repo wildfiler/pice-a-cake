@@ -17,3 +17,5 @@
     = t('.you_cooked_this_recipe')
   - else
     = link_to t('.i_cooked_this'), receipt_cooked_path(@receipt), method: 'post'
+
+= render 'disqus'
