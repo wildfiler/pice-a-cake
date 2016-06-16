@@ -1,11 +1,13 @@
 %table.ingredient-table
   %thead
+    %th= t('.icon')
     %th= t('.name')
     %th= t('.vegeterian')
     %th= t('.spice')
   %tbody
     - @ingredients.each do |ingredient|
       %tr{ id: "ingredient-#{ingredient.id}" }
+        %td= image_tag ingredient.icon_url
         %td= link_to ingredient.name, ingredient_path(ingredient)
         %td
           - if ingredient.vegeterian?

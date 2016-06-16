@@ -6,6 +6,7 @@
     %ul.components
       - @receipt.components.each do |component|
         %li.component
+          = image_tag component.ingredient.icon_url
           = component.ingredient.name
           = component.quantity
           = component.units

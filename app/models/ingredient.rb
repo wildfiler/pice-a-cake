@@ -8,6 +8,8 @@ class Ingredient < BaseModel
   validates :name, presence: true
   validates :vegeterian, :spice, inclusion: { in: [true, false] }
 
+  mount_uploader :icon, IconUploader
+
   def parent_name
     if parent_id.present?
       parent.name

@@ -11,6 +11,7 @@ en:
       name: 'Name'
       vegeterian: 'Vegetarian'
       spice: 'Spice'
+      icon: 'Icon'
     new:
       save: 'Save'
       parent: 'Parent'

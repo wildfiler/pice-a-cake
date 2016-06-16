@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615150656) do
+ActiveRecord::Schema.define(version: 20160616135502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160615150656) do
     t.boolean "vegeterian", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "icon"
   end
 
   create_table "receipts", force: :cascade do |t|
@@ -87,10 +88,10 @@ ActiveRecord::Schema.define(version: 20160615150656) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
-  add_foreign_key "cooked_recipes", "receipts"
-  add_foreign_key "cooked_recipes", "users"
   add_foreign_key "components", "ingredients"
   add_foreign_key "components", "receipts"
+  add_foreign_key "cooked_recipes", "receipts"
+  add_foreign_key "cooked_recipes", "users"
   add_foreign_key "ingredient_attitudes", "ingredients"
   add_foreign_key "ingredient_attitudes", "users"
   add_foreign_key "ingredients", "ingredients", column: "parent_id"
