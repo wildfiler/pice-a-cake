@@ -14,6 +14,8 @@ gem 'haml'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'simple_form'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :production do
   gem 'newrelic_rpm'
