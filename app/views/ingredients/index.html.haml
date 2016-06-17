@@ -8,7 +8,7 @@
         %td= image_tag ingredient.icon_url
         %td= link_to ingredient.name, ingredient_path(ingredient)
         %td.icons-in-table
-          -if ingredient.loved_by? current_user
+          - if ingredient.loved_by? current_user
             %span.icon-love
           - if ingredient.spice?
             %span.icon-spice
