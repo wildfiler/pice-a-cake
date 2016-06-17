@@ -8,10 +8,10 @@ class Ingredient < BaseModel
   validates :name, presence: true
   validates :vegeterian, :spice, inclusion: { in: [true, false] }
 
-  scope :not_hated, lambda {
-    includes(:ingredient_attitudes).
-      where('ingredient_attitudes.id is NULL or ingredient_attitudes.attitude = ?', 'love').
-      references(:ingredient_attitudes)
+  scope :not_hated_by, lambda { |user|
+    joins('LEFT JOIN ingredient_attitudes ON ingredients.id = ingredient_attitudes.ingredient_id').
+      where("ingredient_attitudes.id IS NULL OR (ingredient_attitudes.user_id = ?
+        AND ingredient_attitudes.attitude != 'hate')", user.id)
   }
 
   mount_uploader :icon, IconUploader

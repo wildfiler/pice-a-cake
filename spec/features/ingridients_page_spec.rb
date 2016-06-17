@@ -12,5 +12,18 @@ describe 'User visit ingredients page' do
     expect(page).to have_content(loved_ingredient.ingredient.name)
     expect(page).to have_content(no_attitude_ingredient.name)
     expect(page).to_not have_content(hated_ingredient.ingredient.name)
+    expect(page).to_not have_content(hated_ingredient.ingredient.name)
+  end
+
+  it 'not sees only his hated ingredients' do
+    user = create :user
+    other_user = create :user
+    hated_ingredient = create :ingredient_attitude, :hate, user: user
+    other_user_hated_ingredient = create :ingredient_attitude, :hate, user: other_user
+
+    visit ingredients_path(as: user)
+
+    expect(page).to_not have_content(hated_ingredient.ingredient.name)
+    expect(page).to have_content(other_user_hated_ingredient.ingredient.name)
   end
 end
