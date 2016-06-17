@@ -19,11 +19,13 @@ describe 'User visit ingredients page' do
     user = create :user
     other_user = create :user
     hated_ingredient = create :ingredient_attitude, :hate, user: user
+    loved_ingredient = create :ingredient_attitude, :love, user: user
     other_user_hated_ingredient = create :ingredient_attitude, :hate, user: other_user
 
     visit ingredients_path(as: user)
 
     expect(page).to_not have_content(hated_ingredient.ingredient.name)
+    expect(page).to have_content(loved_ingredient.ingredient.name)
     expect(page).to have_content(other_user_hated_ingredient.ingredient.name)
   end
 end
