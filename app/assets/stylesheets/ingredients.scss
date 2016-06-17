@@ -1,5 +1,8 @@
 .ingredient-table {
   @extend .table;
   @extend .table-striped;
-  @extend .table-bordered;
+}
+
+.icons-in-table {
+  @extend .text-right;
 }

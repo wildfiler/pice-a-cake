@@ -10,7 +10,7 @@ describe 'ingredients/index.html.haml' do
 
       render
 
-      expect(rendered).to have_css("#ingredient-#{ingredient.id} .icon-check", count: 1)
+      expect(rendered).to have_css("#ingredient-#{ingredient.id} .icon-vegeterian", count: 1)
     end
 
     it 'display spice check icon' do
@@ -19,7 +19,7 @@ describe 'ingredients/index.html.haml' do
 
       render
 
-      expect(rendered).to have_css("#ingredient-#{ingredient.id} .icon-check", count: 1)
+      expect(rendered).to have_css("#ingredient-#{ingredient.id} .icon-spice", count: 1)
     end
 
     it "don't display any icons" do
