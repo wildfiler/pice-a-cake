@@ -1,21 +1,20 @@
 Feature: Adding Receipts
 
-  Scenario: Add simple receipt with multiple ingredients
+  Background:
     Given signed in user
-    And ingredients
-      | name      |
-      | Grechka   |
-      | Water     |
-      | Salt      |
-      | Green tea |
+
+  Scenario: Add simple receipt with multiple ingredients
     When visit "Add receipt" page
-    And fill "Title" with "Grechka Tea"
-    And add components
-      | name      | quantity | unit |
-      | Grechka   | 100      | kg   |
-      | Water     | 5000     | l    |
-      | Salt      | 30       | kg   |
-      | Green tea | 1        | t    |
-    And fill "Description" with "Traditional Idiots tea"
+    And fill recipe form
     And click "Create Receipt"
-    Then on "Grechka Tea" receipt page
+    Then I expect to be on added recipe page
+    And I expect to see recipt components
+
+  @future
+  Scenario: Add recipe with multiple steps
+    When visit "Add receipt" page
+    And fill recipe form
+    And fill five steps for recipe
+    And click "Create Receipt"
+    Then I expect to be on added recipe page
+    And see recipe steps
