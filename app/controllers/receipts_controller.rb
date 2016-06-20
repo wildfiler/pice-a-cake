@@ -28,6 +28,7 @@ class ReceiptsController < ApplicationController
   def receipt_params
     params.require(:receipt).permit(:title,
                                     :description,
+                                    :photo,
                                     :component_id,
                                     components_attributes: [
                                       :units,

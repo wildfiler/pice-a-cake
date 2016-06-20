@@ -1,6 +1,7 @@
 .receipt-panel
   %h3= @receipt.title
-
+  .photo
+    = image_tag @receipt.photo_url(:small)
   .receipt-body
     %p= @receipt.description
     %ul.components
