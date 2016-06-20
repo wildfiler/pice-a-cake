@@ -17,13 +17,12 @@ Given(/^receipts$/) do |receipts|
   end
 end
 
-
 When(/^fill recipe form$/) do
   @recipe = attributes_for(:receipt)
 
   step %{fill "Title" with "#{@recipe[:title]}"}
-  components = (1..5).map{ attributes_for :component }
-  components_table = components.map{|attr| "|#{attr[:name]}|#{attr[:quantity]}|#{attr[:unit]}|"}
+  components = (1..5).map { attributes_for :component }
+  components_table = components.map { |attr| "|#{attr[:name]}|#{attr[:quantity]}|#{attr[:unit]}|" }
   components_table.unshift('|name|quantity|unit|')
   step 'add components', table(components_table.join('\n'))
   step %{fill "Description" with "#{@recipe[:description]}"}

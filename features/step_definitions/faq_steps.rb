@@ -9,6 +9,7 @@ second line of the answer
   steps <<-STEPS
     When fill "Title" with "#{@question[:title]}"
     And fill "Answer" with "#{question[:answer]}"
+    And click "Save"
   STEPS
 end
 
