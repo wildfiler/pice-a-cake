@@ -1,9 +1,30 @@
-.icon-check {
+
+.icon {
   @extend .glyphicon;
+  font-size: 1.5em;
+}
+
+.icon-check {
   @extend .glyphicon-ok;
+  @extend .icon;
 }
 
 .icon-remove {
-  @extend .glyphicon;
   @extend .glyphicon-remove;
+  @extend .icon;
+}
+
+.icon-vegeterian {
+  @extend .glyphicon-leaf;
+  @extend .icon;
+}
+
+.icon-spice {
+  @extend .glyphicon-fire;
+  @extend .icon;
+}
+
+.icon-love {
+  @extend .glyphicon-heart;
+  @extend .icon;
 }
