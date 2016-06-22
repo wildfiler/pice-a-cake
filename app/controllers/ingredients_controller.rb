@@ -1,8 +1,11 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.
-                   not_hated_by(current_user).
-                   paginate(page: params[:page], per_page: 50)
+    @ingredients = if signed_in?
+                     Ingredient.not_hated_by(current_user)
+                   else
+                     Ingredient.all
+                   end
+    @ingredients = @ingredients.paginate(page: params[:page], per_page: 50)
   end
 
   def show
