@@ -1,4 +1,9 @@
 class Ingredient < BaseModel
+  NOT_HATES_JOIN_QUERY = <<~SQL
+    LEFT JOIN ingredient_attitudes ON ingredients.id = ingredient_attitudes.ingredient_id
+                                   AND ingredient_attitudes.user_id = %{user_id}
+ SQL
+
   belongs_to :user
   has_many :components
   has_many :receipts, through: :components
@@ -9,8 +14,7 @@ class Ingredient < BaseModel
   validates :vegeterian, :spice, inclusion: { in: [true, false] }
 
   scope :not_hated_by, lambda { |user|
-    joins("LEFT JOIN ingredient_attitudes ON ingredients.id = ingredient_attitudes.ingredient_id
-      AND ingredient_attitudes.user_id = #{user.id}").
+    joins(NOT_HATES_JOIN_QUERY % { user_id: user.id }).
       where("ingredient_attitudes.id IS NULL OR (ingredient_attitudes.user_id = ?
         AND ingredient_attitudes.attitude != 'hate')", user.id)
   }
