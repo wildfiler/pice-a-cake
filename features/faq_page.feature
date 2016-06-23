@@ -1,4 +1,3 @@
-@future
 Feature: FAQ page section
 
   Scenario: Create Question and Answer

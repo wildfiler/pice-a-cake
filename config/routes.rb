@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :cooked, only: [:index], controller: :cooked_recipes
   end
 
+  resources :faq, only: [:index, :new, :create]
+
   root 'home#index'
   get 'search', to: 'search#index'
 end

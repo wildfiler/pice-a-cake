@@ -1,0 +1,6 @@
+= link_to 'Add new', new_faq_path
+%article
+  - @questions.each do |question|
+    %header
+      %h2= question.title
+    = simple_format(question.answer)

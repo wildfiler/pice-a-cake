@@ -15,6 +15,10 @@ And(/^fill "([^"]*)" with "([^"]*)"$/) do |field, value|
   fill_in field, with: value
 end
 
+And(/^fill "([^"]*)" with$/) do |field, value|
+  fill_in field, with: value
+end
+
 And(/^select "([^"]*)" as "([^"]*)"$/) do |field, value|
   select value, from: field
 end

@@ -8,14 +8,17 @@ second line of the answer
   }
   steps <<-STEPS
     When fill "Title" with "#{@question[:title]}"
-    And fill "Answer" with "#{question[:answer]}"
-    And click "Save"
+    And fill "Answer" with
+    """
+    #{@question[:answer]}
+    """
+    And click "Create Question"
   STEPS
 end
 
 And(/^I see question on the page$/) do
-  step %[see "#{@answer[:title]}"]
-  step %[see "#{@answer[:answer]}"]
+  step %[see "#{@question[:title]}"]
+  step %[see "#{@question[:answer]}"]
 end
 
 Given(/^two questions exists$/) do
