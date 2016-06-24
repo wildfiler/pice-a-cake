@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623134014) do
+ActiveRecord::Schema.define(version: 20160623204323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,17 @@ ActiveRecord::Schema.define(version: 20160623134014) do
   add_index "recipe_attitudes", ["receipt_id"], name: "index_recipe_attitudes_on_receipt_id", using: :btree
   add_index "recipe_attitudes", ["user_id"], name: "index_recipe_attitudes_on_user_id", using: :btree
 
+  create_table "recipe_steps", force: :cascade do |t|
+    t.text "text", null: false
+    t.integer "position", null: false
+    t.integer "receipt_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recipe_steps", ["position"], name: "index_recipe_steps_on_position", using: :btree
+  add_index "recipe_steps", ["receipt_id"], name: "index_recipe_steps_on_receipt_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
@@ -106,4 +117,5 @@ ActiveRecord::Schema.define(version: 20160623134014) do
   add_foreign_key "receipts", "users"
   add_foreign_key "recipe_attitudes", "receipts"
   add_foreign_key "recipe_attitudes", "users"
+  add_foreign_key "recipe_steps", "receipts"
 end

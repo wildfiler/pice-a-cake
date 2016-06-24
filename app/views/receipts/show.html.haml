@@ -11,6 +11,10 @@
           = component.ingredient.name
           = component.quantity
           = component.units
+    %ol.steps
+      - @receipt.steps.ordered.each do |step|
+        %li.step
+          = step.text
 
 = link_to t('.i_love_this'), receipt_loved_path(@receipt), method: 'post'
 = link_to t('.i_hate_this'), receipt_hated_path(@receipt), method: 'post'

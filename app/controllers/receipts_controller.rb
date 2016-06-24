@@ -12,6 +12,9 @@ class ReceiptsController < ApplicationController
   def new
     @receipt = Receipt.new
     5.times { @receipt.components.build }
+    5.times do |n|
+      @receipt.steps.build(position: n)
+    end
   end
 
   def create
@@ -35,6 +38,11 @@ class ReceiptsController < ApplicationController
                                       :quantity,
                                       :receipt_id,
                                       :ingredient_id
+                                    ],
+                                    steps_attributes: [
+                                      :text,
+                                      :position,
+                                      :receipt_id
                                     ])
   end
 end

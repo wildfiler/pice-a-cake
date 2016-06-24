@@ -7,6 +7,7 @@ describe Receipt do
 
   describe 'associations' do
     it { is_expected.to have_many(:components).dependent(:destroy) }
+    it { is_expected.to have_many(:steps).dependent(:destroy).class_name('RecipeStep') }
   end
 
   describe '#vegeterian?' do

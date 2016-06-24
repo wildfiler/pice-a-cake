@@ -10,7 +10,6 @@ Feature: Adding Receipts
     Then I expect to be on added recipe page
     And I expect to see recipt components
 
-  @future
   Scenario: Add recipe with multiple steps
     When visit "Add receipt" page
     And fill recipe form
