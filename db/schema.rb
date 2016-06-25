@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160625180901) do
     t.integer "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
   end
 
   add_index "recipe_steps", ["position"], name: "index_recipe_steps_on_position", using: :btree

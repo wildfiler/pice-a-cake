@@ -15,6 +15,7 @@
       - @recipe.steps.ordered.each do |step|
         %li.step
           = step.text
+          = image_tag step.photo_url(:small) if step.photo
 
 = link_to t('.i_love_this'), recipe_loved_path(@recipe), method: 'post'
 = link_to t('.i_hate_this'), recipe_hated_path(@recipe), method: 'post'

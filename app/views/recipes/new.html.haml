@@ -15,4 +15,5 @@
   = recipe.simple_fields_for :steps do |recipe_step|
     = recipe_step.input :position, type: 'hidden'
     = recipe_step.input :text, required: false, label: false
+    = recipe_step.input :photo
   = recipe.submit

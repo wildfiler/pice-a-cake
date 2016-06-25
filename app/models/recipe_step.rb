@@ -3,4 +3,6 @@ class RecipeStep < ActiveRecord::Base
   validates :text, :position, :recipe, presence: true
 
   scope :ordered, -> { order(:position) }
+
+  mount_uploader :photo, PhotoUploader
 end

@@ -40,7 +40,8 @@ class RecipesController < ApplicationController
                                     ],
                                     steps_attributes: [
                                       :text,
-                                      :position
+                                      :position,
+                                      :photo
                                     ])
   end
 end
