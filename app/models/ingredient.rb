@@ -6,7 +6,7 @@ class Ingredient < BaseModel
 
   belongs_to :user
   has_many :components
-  has_many :receipts, through: :components
+  has_many :recipes, through: :components
   has_many :ingredient_attitudes, dependent: :destroy
   belongs_to :parent, class_name: Ingredient
 

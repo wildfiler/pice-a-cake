@@ -1,6 +1,6 @@
 en:
   home:
     index:
-      enter_receipt_name: 'Enter receipt name'
+      enter_recipe_name: 'Enter recipe name'
       search: 'Search'
-      latest_ten_receipts: 'Latest ten receipts'
+      latest_ten_recipes: 'Latest ten recipes'

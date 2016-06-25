@@ -1,0 +1,27 @@
+.recipe-panel
+  %h3= @recipe.title
+  .photo
+    = image_tag @recipe.photo_url(:small)
+  .recipe-body
+    %p= @recipe.description
+    %ul.components
+      - @recipe.components.each do |component|
+        %li.component
+          = image_tag component.ingredient.icon_url
+          = component.ingredient.name
+          = component.quantity
+          = component.units
+    %ol.steps
+      - @recipe.steps.ordered.each do |step|
+        %li.step
+          = step.text
+
+= link_to t('.i_love_this'), recipe_loved_path(@recipe), method: 'post'
+= link_to t('.i_hate_this'), recipe_hated_path(@recipe), method: 'post'
+- if signed_in?
+  - if @recipe.cooked_by? current_user
+    = t('.you_cooked_this_recipe')
+  - else
+    = link_to t('.i_cooked_this'), recipe_cooked_path(@recipe), method: 'post'
+
+= render 'disqus'

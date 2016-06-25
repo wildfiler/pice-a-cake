@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :component do
-    receipt
+    recipe
     ingredient
     quantity 10
     units 'kg'

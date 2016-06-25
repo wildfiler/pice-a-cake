@@ -1,18 +1,18 @@
-%h1= t('.new_receipt')
-= simple_form_for @receipt do |receipt|
-  = receipt.input :title
-  = receipt.input :description
+%h1= t('.new_recipe')
+= simple_form_for @recipe do |recipe|
+  = recipe.input :title
+  = recipe.input :description
   %h3 Components
-  = receipt.simple_fields_for :components do |component|
+  = recipe.simple_fields_for :components do |component|
     %p
       = component.input_field :ingredient_id,
                         collection: Ingredient.all,
                         required: false
       = component.input_field :quantity, placeholder: t('.quantity')
       = component.input_field :units, placeholder: t('.units')
-  = receipt.input :photo
+  = recipe.input :photo
   %h3 Steps
-  = receipt.simple_fields_for :steps do |recipe_step|
+  = recipe.simple_fields_for :steps do |recipe_step|
     = recipe_step.input :position, type: 'hidden'
     = recipe_step.input :text, required: false, label: false
-  = receipt.submit
+  = recipe.submit

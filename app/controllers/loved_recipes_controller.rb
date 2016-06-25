@@ -5,7 +5,7 @@ class LovedRecipesController < ApplicationController
     @attitude = 'love'
     @recipe_attitudes = current_user.
                         recipe_attitudes.
-                        includes(receipt: [components: :ingredient]).
+                        includes(recipe: [components: :ingredient]).
                         where(attitude: 'love').
                         paginate(page: params[:page], per_page: 20)
     render 'recipe_attitudes/index'
@@ -14,7 +14,7 @@ class LovedRecipesController < ApplicationController
   def create
     recipe_attitude = current_user.
                       recipe_attitudes.
-                      find_or_initialize_by(receipt_id: params[:receipt_id])
+                      find_or_initialize_by(recipe_id: params[:recipe_id])
     recipe_attitude.attitude = 'love'
     if recipe_attitude.save
       redirect_to :back

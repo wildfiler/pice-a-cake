@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623204323) do
+ActiveRecord::Schema.define(version: 20160625180901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "components", force: :cascade do |t|
-    t.integer "receipt_id", null: false
+    t.integer "recipe_id", null: false
     t.integer "ingredient_id", null: false
     t.integer "quantity"
     t.string "units"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20160623204323) do
 
   create_table "cooked_recipes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "receipt_id", null: false
+    t.integer "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "cooked_recipes", ["receipt_id"], name: "index_cooked_recipes_on_receipt_id", using: :btree
+  add_index "cooked_recipes", ["recipe_id"], name: "index_cooked_recipes_on_recipe_id", using: :btree
   add_index "cooked_recipes", ["user_id"], name: "index_cooked_recipes_on_user_id", using: :btree
 
   create_table "ingredient_attitudes", force: :cascade do |t|
@@ -64,7 +64,29 @@ ActiveRecord::Schema.define(version: 20160623204323) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "receipts", force: :cascade do |t|
+  create_table "recipe_attitudes", force: :cascade do |t|
+    t.string "attitude", null: false
+    t.integer "user_id", null: false
+    t.integer "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recipe_attitudes", ["recipe_id"], name: "index_recipe_attitudes_on_recipe_id", using: :btree
+  add_index "recipe_attitudes", ["user_id"], name: "index_recipe_attitudes_on_user_id", using: :btree
+
+  create_table "recipe_steps", force: :cascade do |t|
+    t.text "text", null: false
+    t.integer "position", null: false
+    t.integer "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recipe_steps", ["position"], name: "index_recipe_steps_on_position", using: :btree
+  add_index "recipe_steps", ["recipe_id"], name: "index_recipe_steps_on_recipe_id", using: :btree
+
+  create_table "recipes", force: :cascade do |t|
     t.integer "user_id"
     t.string "title", null: false
     t.text "description"
@@ -72,28 +94,6 @@ ActiveRecord::Schema.define(version: 20160623204323) do
     t.datetime "updated_at", null: false
     t.string "photo"
   end
-
-  create_table "recipe_attitudes", force: :cascade do |t|
-    t.string "attitude", null: false
-    t.integer "user_id", null: false
-    t.integer "receipt_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "recipe_attitudes", ["receipt_id"], name: "index_recipe_attitudes_on_receipt_id", using: :btree
-  add_index "recipe_attitudes", ["user_id"], name: "index_recipe_attitudes_on_user_id", using: :btree
-
-  create_table "recipe_steps", force: :cascade do |t|
-    t.text "text", null: false
-    t.integer "position", null: false
-    t.integer "receipt_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "recipe_steps", ["position"], name: "index_recipe_steps_on_position", using: :btree
-  add_index "recipe_steps", ["receipt_id"], name: "index_recipe_steps_on_receipt_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -108,15 +108,15 @@ ActiveRecord::Schema.define(version: 20160623204323) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "components", "ingredients"
-  add_foreign_key "components", "receipts"
-  add_foreign_key "cooked_recipes", "receipts"
+  add_foreign_key "components", "recipes"
+  add_foreign_key "cooked_recipes", "recipes"
   add_foreign_key "cooked_recipes", "users"
   add_foreign_key "ingredient_attitudes", "ingredients"
   add_foreign_key "ingredient_attitudes", "users"
   add_foreign_key "ingredients", "ingredients", column: "parent_id"
   add_foreign_key "ingredients", "users"
-  add_foreign_key "receipts", "users"
-  add_foreign_key "recipe_attitudes", "receipts"
+  add_foreign_key "recipe_attitudes", "recipes"
   add_foreign_key "recipe_attitudes", "users"
-  add_foreign_key "recipe_steps", "receipts"
+  add_foreign_key "recipe_steps", "recipes"
+  add_foreign_key "recipes", "users"
 end

@@ -1,10 +1,10 @@
 %h2= t(".#{@attitude}d_recipes")
-.receipts
+.recipes
   - @recipe_attitudes.each do |recipe_attitude|
-    .receipt
-      %h4= link_to recipe_attitude.receipt.title, receipt_path(recipe_attitude.receipt)
+    .recipe
+      %h4= link_to recipe_attitude.recipe.title, recipe_path(recipe_attitude.recipe)
       %ul.components
-        - recipe_attitude.receipt.components.each do |component|
+        - recipe_attitude.recipe.components.each do |component|
           %li.component
             = component.ingredient.name
 = will_paginate @recipe_attitudes

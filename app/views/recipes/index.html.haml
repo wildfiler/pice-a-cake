@@ -1,0 +1,3 @@
+%h1= t('.all_recipes')
+= render partial: 'recipes/recipes_list', locals: { recipes: @recipes }
+= will_paginate @recipes

@@ -1,7 +1,7 @@
 class CookedRecipe < ActiveRecord::Base
   belongs_to :user
-  belongs_to :receipt
+  belongs_to :recipe
 
-  validates :user_id, :receipt_id, presence: true
-  validates :receipt_id, uniqueness: { scope: :user_id }
+  validates :user_id, :recipe_id, presence: true
+  validates :recipe_id, uniqueness: { scope: :user_id }
 end

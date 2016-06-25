@@ -4,12 +4,12 @@ class CookedRecipesController < ApplicationController
   def index
     @cooked_recipes = current_user.
                       cooked_recipes.
-                      includes(receipt: [components: :ingredient]).
+                      includes(recipe: [components: :ingredient]).
                       paginate(page: params[:page], per_page: 20)
   end
 
   def create
-    cooked_recipe = current_user.cooked_recipes.new(receipt_id: params[:receipt_id])
+    cooked_recipe = current_user.cooked_recipes.new(recipe_id: params[:recipe_id])
     if cooked_recipe.save
       redirect_to :back
     else

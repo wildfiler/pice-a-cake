@@ -1,9 +1,0 @@
-.receipts
-  - receipts.each do |receipt|
-    .receipt
-      %h4= link_to receipt.title, receipt_path(receipt)
-      = image_tag receipt.photo_url(:thumb)
-      %ul.components
-        - receipt.components.each do |component|
-          %li.component
-            = component.ingredient.name

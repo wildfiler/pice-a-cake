@@ -1,9 +1,9 @@
 en:
-  receipts:
+  recipes:
     index:
-      all_receipts: 'All Receipts'
+      all_recipes: 'All Recipes'
     new:
-      new_receipt: 'New Receipt'
+      new_recipe: 'New Recipe'
       components: 'Components'
       quantity: 'Quantity'
       units: 'Units'

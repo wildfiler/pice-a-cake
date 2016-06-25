@@ -1,26 +1,26 @@
-class ReceiptsController < ApplicationController
+class RecipesController < ApplicationController
   def index
-    @receipts = Receipt.
+    @recipes = Recipe.
                 ordered.
                 paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @receipt = Receipt.find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
-    @receipt = Receipt.new
-    5.times { @receipt.components.build }
+    @recipe = Recipe.new
+    5.times { @recipe.components.build }
     5.times do |n|
-      @receipt.steps.build(position: n)
+      @recipe.steps.build(position: n)
     end
   end
 
   def create
-    @receipt = Receipt.new(receipt_params)
-    if @receipt.save
-      redirect_to receipt_path(@receipt)
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to recipe_path(@recipe)
     else
       render :new
     end
@@ -28,21 +28,19 @@ class ReceiptsController < ApplicationController
 
   private
 
-  def receipt_params
-    params.require(:receipt).permit(:title,
+  def recipe_params
+    params.require(:recipe).permit(:title,
                                     :description,
                                     :photo,
                                     :component_id,
                                     components_attributes: [
                                       :units,
                                       :quantity,
-                                      :receipt_id,
                                       :ingredient_id
                                     ],
                                     steps_attributes: [
                                       :text,
-                                      :position,
-                                      :receipt_id
+                                      :position
                                     ])
   end
 end

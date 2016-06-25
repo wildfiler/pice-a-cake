@@ -1,9 +1,9 @@
 class SearchController < ApplicationController
   def index
-    @receipts = Receipt.
+    @recipes = Recipe.
                 includes(components: :ingredient).
                 find_by_title(params[:search]).
                 paginate(page: params[:page], per_page: 10)
-    render 'receipts/index'
+    render 'recipes/index'
   end
 end

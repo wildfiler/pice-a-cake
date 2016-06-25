@@ -26,18 +26,18 @@ namespace :data do
       end
     end
 
-    desc 'create receipt 20 receipts with 1-5 components'
-    task :receipts, [:option] => :environment do |_t, option|
+    desc 'create recipe 20 recipes with 1-5 components'
+    task :recipes, [:option] => :environment do |_t, option|
       if Rails.env.production?
         puts "You can't run this command in #{Rails.env} environment"
         exit
       end
 
-      [Receipt, Component].each(&:delete_all) if option[:option] == 'delete'
+      [Recipe, Component].each(&:delete_all) if option[:option] == 'delete'
 
       number_of_ingredients = Ingredient.count
       20.times do
-        receipt = FactoryGirl.create :receipt
+        recipe = FactoryGirl.create :recipe
         number_of_components = rand(5) + 1
 
         number_of_components.times do
@@ -46,17 +46,17 @@ namespace :data do
           units_types = %w(kg, l, g, glass, spoon)
           units = units_types.sample
           FactoryGirl.create :component,
-                             receipt_id: receipt.id,
+                             recipe_id: recipe.id,
                              ingredient_id: ingredient.id,
                              units: units,
                              quantity: quantity
         end
 
-        next unless receipt.ingredients.to_a.all?(&:spice?)
+        next unless recipe.ingredients.to_a.all?(&:spice?)
         ingredient = Ingredient.where(spice: false).offset(rand(Ingredient.count)).first
         quantity = rand(20) + 1
         FactoryGirl.create :component,
-                           receipt_id: receipt.id,
+                           recipe_id: recipe.id,
                            ingredient_id: ingredient.id,
                            quantity: quantity
       end

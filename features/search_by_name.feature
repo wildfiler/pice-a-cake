@@ -1,14 +1,14 @@
-Feature: Search by receipt name
+Feature: Search by recipe name
 
   Scenario: Search by partial name
-    Given receipts
+    Given recipes
       | name           |
       | Cupcake        |
       | Poopcake       |
       | Fry Strawberry |
     When visit "home" page
-    And fill "Enter receipt name" with "cake"
+    And fill "Enter recipe name" with "cake"
     And click "Search"
-    Then see "Cupcake" receipt
-    And see "Poopcake" receipt
-    But not see "Fry Strawberry" receipt
+    Then see "Cupcake" recipe
+    And see "Poopcake" recipe
+    But not see "Fry Strawberry" recipe

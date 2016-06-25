@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :recipe_attitude do
     user
-    receipt
+    recipe
     attitude 'love'
 
     trait :love do

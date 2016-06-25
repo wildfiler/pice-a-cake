@@ -1,0 +1,9 @@
+.recipes
+  - recipes.each do |recipe|
+    .recipe
+      %h4= link_to recipe.title, recipe_path(recipe)
+      = image_tag recipe.photo_url(:thumb)
+      %ul.components
+        - recipe.components.each do |component|
+          %li.component
+            = component.ingredient.name

@@ -25,7 +25,7 @@ class CreateBaseTables < ActiveRecord::Migration
     end
 
     create_table :components do |t|
-      t.references :receipt, null: false
+      t.references :recipe, null: false
       t.references :ingredient, null: false
       t.integer :quantity
       t.string :units

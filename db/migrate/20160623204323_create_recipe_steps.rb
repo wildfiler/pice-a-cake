@@ -4,7 +4,7 @@ class CreateRecipeSteps < ActiveRecord::Migration
       t.text :text, null: false
       t.integer :position, null: false
       t.index :position
-      t.references :receipt, null: false, index: true, foreign_key: true
+      t.references :recipe, null: false, index: true, foreign_key: true
 
       t.timestamps null: false
     end

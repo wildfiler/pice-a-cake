@@ -1,6 +1,6 @@
 = form_tag search_path, method: "get" do
-  = text_field_tag :search, params[:search], placeholder: t('.enter_receipt_name')
+  = text_field_tag :search, params[:search], placeholder: t('.enter_recipe_name')
   = submit_tag t('.search'), name: nil
 
-%h2= t('.latest_ten_receipts')
-= render partial: 'receipts/receipts_list', locals: { receipts: @last_ten_receipts }
+%h2= t('.latest_ten_recipes')
+= render partial: 'recipes/recipes_list', locals: { recipes: @last_ten_recipes }
