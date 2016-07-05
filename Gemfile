@@ -17,6 +17,8 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'pundit'
+
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
