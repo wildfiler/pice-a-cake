@@ -30,8 +30,8 @@
   - else
     = link_to t('.i_cooked_this'), recipe_cooked_path(@recipe), method: 'post'
 
-.fb-share-button{"data-href" => "#{ recipe_url(@recipe) }",
-                  "data-layout" => "button_count"}
+.fb-share-button{ "data-href" => "#{ recipe_url(@recipe) }",
+                  "data-layout" => "button_count" }
 
 
 = render 'disqus'
