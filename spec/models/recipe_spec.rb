@@ -8,6 +8,8 @@ describe Recipe do
   describe 'associations' do
     it { is_expected.to have_many(:components).dependent(:destroy) }
     it { is_expected.to have_many(:steps).dependent(:destroy).class_name('RecipeStep') }
+    it { is_expected.to have_many(:recipe_labels).dependent(:destroy) }
+    it { is_expected.to have_many(:labels).through(:recipe_labels) }
   end
 
   describe '#vegeterian?' do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625180901) do
+ActiveRecord::Schema.define(version: 20160713132033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 20160625180901) do
     t.string "icon"
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "title", null: false
     t.text "answer", null: false
@@ -74,6 +80,16 @@ ActiveRecord::Schema.define(version: 20160625180901) do
 
   add_index "recipe_attitudes", ["recipe_id"], name: "index_recipe_attitudes_on_recipe_id", using: :btree
   add_index "recipe_attitudes", ["user_id"], name: "index_recipe_attitudes_on_user_id", using: :btree
+
+  create_table "recipe_labels", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "label_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recipe_labels", ["label_id"], name: "index_recipe_labels_on_label_id", using: :btree
+  add_index "recipe_labels", ["recipe_id"], name: "index_recipe_labels_on_recipe_id", using: :btree
 
   create_table "recipe_steps", force: :cascade do |t|
     t.text "text", null: false
@@ -118,6 +134,8 @@ ActiveRecord::Schema.define(version: 20160625180901) do
   add_foreign_key "ingredients", "users"
   add_foreign_key "recipe_attitudes", "recipes"
   add_foreign_key "recipe_attitudes", "users"
+  add_foreign_key "recipe_labels", "labels"
+  add_foreign_key "recipe_labels", "recipes"
   add_foreign_key "recipe_steps", "recipes"
   add_foreign_key "recipes", "users"
 end
