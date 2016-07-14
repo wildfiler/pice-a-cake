@@ -7,7 +7,7 @@ describe User, type: :model do
 
   context 'roles' do
     it 'has default role set to user' do
-      user = build_stubbed :user
+      user = User.new
       expect(user.role).to eq('user')
     end
   end
