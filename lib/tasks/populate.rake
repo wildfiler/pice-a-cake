@@ -26,7 +26,7 @@ namespace :data do
       end
     end
 
-    desc 'create recipe 20 recipes with 1-5 components'
+    desc 'create recipe 20 recipes with 1-5 components and steps'
     task :recipes, [:option] => :environment do |_t, option|
       if Rails.env.production?
         puts "You can't run this command in #{Rails.env} environment"
@@ -39,6 +39,11 @@ namespace :data do
       20.times do
         recipe = FactoryGirl.create :recipe
         number_of_components = rand(5) + 1
+        number_of_steps = rand(5) + 1
+
+        number_of_steps.times do |n|
+          FactoryGirl.create :recipe_step, recipe: recipe, position: n
+        end
 
         number_of_components.times do
           ingredient = Ingredient.offset(rand(number_of_ingredients)).first
