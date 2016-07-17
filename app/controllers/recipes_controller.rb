@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    5.times { @recipe.components.build }
+    3.times { @recipe.components.build }
     5.times do |n|
       @recipe.steps.build(position: n)
     end
