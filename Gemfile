@@ -16,6 +16,7 @@ gem 'bootstrap-will_paginate'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'react-rails'
 
 group :production do
   gem 'newrelic_rpm'

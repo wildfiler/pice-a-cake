@@ -26,8 +26,9 @@ When(/^visit "([^"]*)" page$/) do |page_name|
 end
 
 Then(/^on "([^"]*)" recipe page$/) do |recipe_name|
+  path = current_path
   recipe = Recipe.find_by!(title: recipe_name)
-  expect(current_path).to eq(recipe_path(recipe))
+  expect(path).to eq(recipe_path(recipe))
 end
 
 When(/^visit "([^"]*)" recipe page$/) do |recipe_name|

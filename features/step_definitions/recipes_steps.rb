@@ -21,10 +21,16 @@ When(/^fill recipe form$/) do
   @recipe = attributes_for(:recipe)
 
   step %{fill "Title" with "#{@recipe[:title]}"}
-  components = (1..5).map { attributes_for :component }
-  components_table = components.map { |attr| "|#{attr[:name]}|#{attr[:quantity]}|#{attr[:unit]}|" }
-  components_table.unshift('|name|quantity|unit|')
-  step 'add components', table(components_table.join('\n'))
+  components = Ingredient.limit(5).map { |ingredient| build :component, ingredient: ingredient }
+  components_table = components.map do |component|
+    [
+      component.ingredient.name,
+      component.quantity,
+      component.units,
+    ]
+  end
+  components_table.unshift(%w{name quantity unit})
+  step 'add components', table(components_table)
   step %{fill "Description" with "#{@recipe[:description]}"}
 end
 
@@ -37,6 +43,7 @@ And(/^fill five steps for recipe$/) do
     'Laugh on it'
   ]
   @recipe_steps.each_with_index do |text, i|
+    find('.add_step', match: :first).click
     steps <<-STEPS
       When fill "recipe_steps_attributes_#{i}_text" with "#{text}"
     STEPS

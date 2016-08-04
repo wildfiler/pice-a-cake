@@ -1,19 +1,6 @@
-%h1= t('.new_recipe')
-= simple_form_for @recipe do |recipe|
-  = recipe.input :title
-  = recipe.input :description
-  %h3 Components
-  = recipe.simple_fields_for :components do |component|
-    %p
-      = component.input_field :ingredient_id,
-                        collection: Ingredient.all,
-                        required: false
-      = component.input_field :quantity, placeholder: t('.quantity')
-      = component.input_field :units, placeholder: t('.units')
-  = recipe.input :photo
-  %h3 Steps
-  = recipe.simple_fields_for :steps do |recipe_step|
-    = recipe_step.input :position, as: :hidden
-    = recipe_step.input :text, required: false, label: false
-    = recipe_step.input :photo
-  = recipe.submit
+= react_component 'RecipeForm', { recipe: @recipe,
+                                  components: @recipe.components,
+                                  steps: @recipe.steps,
+                                  ingredients: Ingredient.all,
+                                  authenticity_token: form_authenticity_token,
+                                  url: recipes_path }

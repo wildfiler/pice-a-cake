@@ -9,10 +9,16 @@ end
 And(/^add components$/) do |components|
   @components = components.hashes
   components.hashes.each_with_index do |component, i|
-    select component[:name], from: "recipe_components_attributes_#{i}_ingredient_id"
-    fill_in "recipe_components_attributes_#{i}_quantity", with: component[:quantity]
-    fill_in "recipe_components_attributes_#{i}_units", with: component[:units]
+    last_component = all('.component').last
+    select component[:name], from: last_component.find('select.ingredient')[:name]
+    fill_in last_component.find('input.quantity')[:name], with: component[:quantity]
+    fill_in last_component.find('input.units')[:name], with: component[:units]
+    click_link 'Add component'
   end
+end
+
+Given(/^(\d+) ingredients$/) do |count|
+  create_list :ingredient, count.to_i
 end
 
 Given(/^ingredients$/) do |ingredients|
