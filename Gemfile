@@ -45,4 +45,5 @@ group :test do
   gem 'db-query-matchers'
   gem 'faker'
   gem 'shoulda'
+  gem 'launchy'
 end
