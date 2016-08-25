@@ -1,7 +1,14 @@
 require 'rails_helper'
 
-describe Ingredient, type: :model do
+describe User, type: :model do
   context 'associations' do
-    it { is_expected.to have_many :ingredient_attitudes }
+    it { is_expected.to validate_inclusion_of(:role).in_array(User::ROLES) }
+  end
+
+  context 'roles' do
+    it 'has default role set to user' do
+      user = User.new
+      expect(user.role).to eq('user')
+    end
   end
 end
