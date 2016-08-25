@@ -7,7 +7,9 @@ class Recipe < BaseModel
   has_many :cooked_recipes, dependent: :destroy
   has_many :steps, class_name: 'RecipeStep', dependent: :destroy, inverse_of: :recipe
 
-  accepts_nested_attributes_for :components, reject_if: proc { |a| a[:ingredient_id].blank? }
+  accepts_nested_attributes_for :components,
+                                reject_if: proc { |a| a[:ingredient_id].blank? },
+                                allow_destroy: true
   accepts_nested_attributes_for :steps, reject_if: proc { |a| a[:text].blank? }
 
   validates :title, presence: true

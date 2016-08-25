@@ -1,0 +1,8 @@
+%p.component
+  = f.input_field :ingredient_id,
+                    collection: Ingredient.all,
+                    required: false
+  = f.input_field :quantity, placeholder: '.quantity'
+  = f.input_field :units, placeholder: '.units'
+  = f.input_field :_destroy, placeholder: 'Remove', as: :hidden
+  = link_to 'Remove component', '#', class: 'remove_component'
