@@ -5,7 +5,7 @@
   .recipe-body
     %p= @recipe.description
     %ul.components
-      - @recipe.components.each do |component|
+      - @recipe.components.ordered.each do |component|
         %li.component
           = image_tag component.ingredient.icon_url
           = component.ingredient.name
@@ -16,7 +16,8 @@
         %li.step
           = step.text
           = image_tag step.photo_url(:small) if step.photo
-
+.edit-recipe
+  = link_to t('.edit'), edit_recipe_path(@recipe)
 = link_to t('.i_love_this'), recipe_loved_path(@recipe), method: 'post'
 = link_to t('.i_hate_this'), recipe_hated_path(@recipe), method: 'post'
 - if signed_in?

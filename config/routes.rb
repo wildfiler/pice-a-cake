@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :hated, only: [:index], controller: :hated_ingredients
   end
 
-  resources :recipes, only: [:index, :show, :new, :create],
+  resources :recipes, only: [:index, :show, :new, :create, :edit, :update],
                        constraints: { id: /\d+/ } do
     resource :loved, only: [:create], controller: :loved_recipes
     resource :hated, only: [:create], controller: :hated_recipes

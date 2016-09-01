@@ -10,8 +10,13 @@ class Recipe < BaseModel
   has_many :recipe_labels, dependent: :destroy
   has_many :labels, through: :recipe_labels
 
-  accepts_nested_attributes_for :components, reject_if: proc { |a| a[:ingredient_id].blank? }
-  accepts_nested_attributes_for :steps, reject_if: proc { |a| a[:text].blank? }
+  accepts_nested_attributes_for :components,
+                                reject_if: proc { |a| a[:ingredient_id].blank? },
+                                allow_destroy: true
+  accepts_nested_attributes_for :steps,
+                                reject_if: proc { |a| a[:text].blank? },
+                                allow_destroy: true
+
 
   validates :title, presence: true
 

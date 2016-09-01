@@ -5,6 +5,20 @@ var RecipeStep = React.createClass({
     });
   },
 
+  step_id: function() {
+   var index = this.props.index
+   var name = "recipe[steps_attributes][" + index + "][id]"
+   var id = "recipe_steps_attributes_" + index + "_id"
+   var value = this.props.step.id
+   return (
+     <input value = { value }
+            type = "hidden"
+            name = { name }
+            id = { id }
+     />
+   );
+  },
+
   position: function() {
     var index = this.props.index;
     var name = "recipe[steps_attributes][" + index + "][position]";
@@ -13,7 +27,7 @@ var RecipeStep = React.createClass({
       <div className="form-group hidden recipe_steps_position">
       <input className="hidden form-control"
               type="hidden"
-              value="0"
+              value = { index }
               name={ name }
               id={ id }
       />
@@ -29,7 +43,9 @@ var RecipeStep = React.createClass({
       <div className="form-group text optional recipe_steps_text">
         <textarea className="text optional form-control"
                   name={ name }
-                  id={ id  }>
+                  id = { id  }
+                  defaultValue = { this.props.step.text }
+        >
         </textarea>
       </div>
     );
@@ -47,6 +63,7 @@ var RecipeStep = React.createClass({
         <input className="file optional"
                type="file"
                name="recipe[steps_attributes][0][photo]"
+               defaultValue = { this.props.step.photo }
         />
       </div>
     );
@@ -59,20 +76,40 @@ var RecipeStep = React.createClass({
     event.preventDefault();
   },
 
+  destroyField: function() {
+    var index = this.props.index
+    var name = "recipe[steps_attributes][" + index + "][_destroy]"
+    var id = "recipe_steps_attributes_" + index +  "__destroy"
+    return (
+      <input type = "hidden"
+             value = "true"
+             name = { name }
+             id = { id }
+      />
+    );
+  },
+
   render: function() {
     if(this.state.removed === true) {
       return(
-        <div />
+        <div>
+          { this.destroyField() }
+          { this.step_id() }
+        </div>
       );
     } else {
       return (
         <div className="recipe_step">
-        { this.position() }
-        { this.text() }
-        { this.photo() }
-        <a href='#' onClick={ this.removeStep } >
-          Remove
-        </a>
+          { this.step_id() }
+          { this.position() }
+          { this.text() }
+          { this.photo() }
+          <a href='#'
+             onClick = { this.removeStep }
+             className = "remove_step"
+          >
+            Remove
+          </a>
         </div>
       );
     }

@@ -5,11 +5,27 @@ var RecipeComponent = React.createClass({
     });
   },
 
+  ingredient_id: function() {
+   var index = this.props.index
+   var name = "recipe[components_attributes][" + index + "][id]"
+   var id = "recipe_components_attributes_" + index + "_id"
+   var value = this.props.component.id
+   return (
+     <input value = { value }
+            type = "hidden"
+            name = { name }
+            id = { id }
+     />
+   );
+  },
+
   ingredient_options: function() {
     return (
       this.props.ingredients.map(function(ingredient) {
         return (
-          <option key={ ingredient.id } value={ ingredient.id }>
+          <option key = { ingredient.id }
+                  value = { ingredient.id }
+          >
             { ingredient.name }
           </option>
         );
@@ -22,7 +38,9 @@ var RecipeComponent = React.createClass({
     return (
       <select className="ingredient select optional"
               name={ name }
+              defaultValue = { this.props.component.ingredient_id }
       >
+        <option value = '' disabeled selected>Choose component...</option>
         { this.ingredient_options() }
       </select>
     );
@@ -35,6 +53,7 @@ var RecipeComponent = React.createClass({
              placeholder="Quantity" type="number"
              step="1"
              name={ name }
+             defaultValue = { this.props.component.quantity }
       />
     );
   },
@@ -46,6 +65,7 @@ var RecipeComponent = React.createClass({
              placeholder="Units"
              type="text"
              name={ name }
+             defaultValue = { this.props.component.units }
       />
     );
   },
@@ -57,18 +77,38 @@ var RecipeComponent = React.createClass({
     event.preventDefault();
   },
 
+  destroyField: function() {
+   var index = this.props.index
+   var name = "recipe[components_attributes][" + index + "][_destroy]"
+   var id = "recipe_components_attributes_" + index +  "__destroy"
+    return (
+      <input type = "hidden"
+             value = "true"
+             name = { name }
+             id = { id }
+      />
+    );
+  },
+
   render: function() {
     if(this.state.removed === true) {
       return(
-        <div />
-      );
+        <div>
+          { this.destroyField() }
+          { this.ingredient_id() }
+        </div>
+      )
     } else {
       return (
         <div className="component">
+          { this.ingredient_id() }
           { this.ingredient_select() }
           { this.quantity_input() }
           { this.units_input() }
-          <a href="#" onClick={ this.removeComponent } >
+          <a href = "#"
+             onClick = { this.removeComponent }
+             className = "remove_component"
+          >
             Remove
           </a>
         </div>
