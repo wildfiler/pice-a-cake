@@ -47,6 +47,10 @@ Then(/^I expect to be on added recipe page$/) do
   step %{on "#{@recipe[:title]}" recipe page}
 end
 
+Then(/^I expect to be on existing recipe page$/) do
+  step %{on "#{@recipe[:title]}" recipe page}
+end
+
 And(/^see recipe steps$/) do
   @recipe_steps.each do |step|
     steps <<-STEPS
@@ -59,4 +63,25 @@ And(/^I expect to see recipt components$/) do
   @components.each do |component|
     step %{see "#{component[:name]}"}
   end
+end
+
+Given(/^recipe with components and steps$/) do
+  @recipe = create(:recipe, :with_components)
+  build_list(:recipe_step, 5, recipe: @recipe)
+end
+
+When(/^change one component of recipe$/) do
+  first_component = find('.component select', match: :first)
+  select Ingredient.last.name, from: first_component[:name]
+end
+
+When(/^change one step of recipe$/) do
+  first_step = find('.step .text', match: :first)
+  @changed_step_text = 'Cook for 14 million hours on slow fire'
+  fill_in first_step[:name], with: @changed_step_text
+end
+
+Then(/^I expect to see that changes$/) do
+  expect(find('.component', match: :first)).to have_content(Ingredient.last.name)
+  expect(page).to have_content(@changed_step_text)
 end

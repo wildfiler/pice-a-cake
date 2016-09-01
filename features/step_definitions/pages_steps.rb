@@ -39,3 +39,7 @@ Then(/^visit "([^"]*)" ingredient page$/) do |ingredient_name|
   ingredient = Ingredient.find_by!(name: ingredient_name)
   visit ingredient_path(ingredient)
 end
+
+When(/^visit existing recipe edit page$/) do
+  visit recipe_path(@recipe)
+end
