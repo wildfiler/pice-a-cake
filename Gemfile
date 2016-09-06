@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'react-rails'
+gem 'redcarpet'
 
 group :production do
   gem 'newrelic_rpm'

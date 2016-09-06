@@ -3,4 +3,4 @@
   - @questions.each do |question|
     %header
       %h2= question.title
-    = simple_format(question.answer)
+    = markdown(question.answer)

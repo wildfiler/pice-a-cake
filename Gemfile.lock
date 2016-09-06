@@ -190,6 +190,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redcarpet (3.3.4)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -279,6 +280,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   rails_12factor
   react-rails
+  redcarpet
   rspec-rails
   sass-rails (~> 5.0)
   shoulda

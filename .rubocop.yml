@@ -306,5 +306,10 @@ Rails/Validation:
   Include:
     - app/models/**/*.rb
 
+Rails/OutputSafety:
+  Include:
+    - app/views/**/*
+  Enabled: true
+
 Style/FrozenStringLiteralComment:
   Enabled: false
