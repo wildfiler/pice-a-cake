@@ -47,14 +47,9 @@ namespace :data do
 
         number_of_components.times do
           ingredient = Ingredient.offset(rand(number_of_ingredients)).first
-          quantity = rand(20) + 1
-          units_types = %w(kg, l, g, glass, spoon)
-          units = units_types.sample
           FactoryGirl.create :component,
                              recipe_id: recipe.id,
-                             ingredient_id: ingredient.id,
-                             units: units,
-                             quantity: quantity
+                             ingredient_id: ingredient.id
         end
 
         next unless recipe.ingredients.to_a.all?(&:spice?)
