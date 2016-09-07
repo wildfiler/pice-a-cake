@@ -6,7 +6,7 @@ var RecipeForm = React.createClass({
                name="authenticity_token"
                value={ this.props.authenticity_token }
         />
-        <h1>New Recipe</h1>
+        <h1>{ I18n.t('recipes.new.new_recipe') }</h1>
         < RecipeTitle />
         < RecipeDescription />
         <h3> Components </h3>

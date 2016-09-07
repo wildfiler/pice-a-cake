@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'react-rails'
+gem "i18n-js", ">= 3.0.0.rc11"
 
 group :production do
   gem 'newrelic_rpm'
