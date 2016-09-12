@@ -39,7 +39,7 @@ class Recipe < BaseModel
       h[component.ingredient_id] += 1
     end
 
-    hash.each do |key, value|
+    hash.each do |_key, value|
       errors.add(:components, 'Ingredients must be unique') if value > 1
     end
   end
