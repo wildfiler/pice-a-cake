@@ -14,6 +14,7 @@ class Recipe < BaseModel
   accepts_nested_attributes_for :steps, reject_if: proc { |a| a[:text].blank? }
 
   validates :title, presence: true
+  validate :check_for_component_uniqueness
 
   mount_uploader :photo, PhotoUploader
 
@@ -31,5 +32,15 @@ class Recipe < BaseModel
 
   def cooked_by?(user)
     cooked_recipes.where(user: user).exists?
+  end
+
+  def check_for_component_uniqueness
+    hash = components.each_with_object(Hash.new(0)) do |component, h|
+      h[component.ingredient_id] += 1
+    end
+
+    hash.each do |_key, value|
+      errors.add(:components, 'Ingredients must be unique') if value > 1
+    end
   end
 end

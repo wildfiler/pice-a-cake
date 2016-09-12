@@ -13,7 +13,7 @@ And(/^add components$/) do |components|
     select component[:name], from: last_component.find('select.ingredient')[:name]
     fill_in last_component.find('input.quantity')[:name], with: component[:quantity]
     fill_in last_component.find('input.units')[:name], with: component[:units]
-    click_link 'Add component'
+    click_link 'Add component' if i < components.hashes.length - 1
   end
 end
 
