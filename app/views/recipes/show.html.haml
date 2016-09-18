@@ -1,3 +1,8 @@
+- content_for :head do
+  %meta{ content: "1374896385870464", property: "fb:app_id" }/
+  %meta{ content: "#{recipe_url(@recipe)}", property: "og:url" }/
+  %meta{ content: "#{@recipe.title}", property: "og:title" }/
+  %meta{ content: "#{@recipe.photo_url(:small)}", property: "og:image" }/
 .recipe-panel
   %h3= @recipe.title
   .photo
@@ -24,5 +29,9 @@
     = t('.you_cooked_this_recipe')
   - else
     = link_to t('.i_cooked_this'), recipe_cooked_path(@recipe), method: 'post'
+
+.fb-share-button{ "data-href" => "#{ recipe_url(@recipe) }",
+                  "data-layout" => "button_count" }
+
 
 = render 'disqus'

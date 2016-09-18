@@ -3,7 +3,9 @@
   %title Pice-A-Cake
   = stylesheet_link_tag    'application', media: 'all'
   = csrf_meta_tags
+  = yield :head
 %body
+  = render 'layouts/facebook_sdk'
   .header{ role: 'navigation' }
     .logo
       Piece-a-cake
