@@ -18,5 +18,11 @@ FactoryGirl.define do
     trait :non_vegeterian do
       with_components
     end
+
+    trait :with_steps do
+      after(:create) do |recipe|
+        recipe.steps = build_list(:recipe_step, 3)
+      end
+    end
   end
 end

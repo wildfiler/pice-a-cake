@@ -10,6 +10,7 @@ var RecipePhoto = React.createClass({
                 type="file"
                 className="recipe[photo]"
                 id="recipe_photo"
+                defaultValue = { this.props.photo }
         />
       </div>
     );

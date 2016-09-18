@@ -22,6 +22,19 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to @recipe
+    else
+      render :edit
+    end
+  end
+
   private
 
   def recipe_params
@@ -32,12 +45,16 @@ class RecipesController < ApplicationController
                                     components_attributes: [
                                       :units,
                                       :quantity,
-                                      :ingredient_id
+                                      :ingredient_id,
+                                      :id,
+                                      :_destroy
                                     ],
                                     steps_attributes: [
                                       :text,
                                       :position,
-                                      :photo
+                                      :photo,
+                                      :id,
+                                      :_destroy
                                     ])
   end
 end

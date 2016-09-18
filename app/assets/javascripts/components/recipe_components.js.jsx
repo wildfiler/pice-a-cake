@@ -30,6 +30,7 @@ var RecipeComponents = React.createClass({
       <div>
         { this.render_components() }
         <a href='#'
+           className = "add_component"
            onClick={this.addComponent}
         >
           Add component

@@ -8,7 +8,9 @@ var RecipeDescription = React.createClass({
         </label>
           <textarea className="text optional form-control"
                     name="recipe[description]"
-                    id="recipe_description">
+                    id = "recipe_description"
+                    defaultValue = { this.props.description }
+          >
         </textarea>
       </div>
     );
